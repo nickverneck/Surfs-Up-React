@@ -7,29 +7,31 @@ export const Home = () => {
     // access to the isAuthenticated property from the auth reducer state
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
 
-    const showLoginBtn = () => {
-        if (!isAuthenticated) {
-            return (
-                <Button color="black" animated secondary>
-                    <Button.Content visible>Login</Button.Content>
-                    <Button.Content hidden>
-                        <Icon name='arrow right' />
-                    </Button.Content>
-                </Button>
+    const showBtn = () => {
+        if (isAuthenticated) {
+            return (<div>
+                <button className="btn btn-outline-dark">Add to Favorites</button>
+                <button className="btn btn-outline-dark m-1">Get Location</button>
+                </div>
             )
         }
     }
 
     return (
-        <div>
-            <Message className="message-container" size="huge" secondary="true">
-                <Header size="huge"> Home</Header>
-                <p style={{ marginBottom: "5px" }}>This is a Boiler Plate MERN application with authentication using JSON Web Tokens.</p>
-                <p style={{ margin: "5px 0 25px" }}>This APP was design to be used as a starting point for any developer looking to integrate authentication with a MERN application.</p>
-                <Link to="/login">
-                    {showLoginBtn()}
-                </Link>
-            </Message>
+        <div className="container">
+            <div class="card">
+  <div class="card-header">
+  <h1 className="beach-name">Cocoa Beach</h1> {showBtn()}
+  </div>
+  <div class="card-body">
+  <h3 className="wave-height">Wave Height: 1-2 FT</h3>
+        <h3 className="wind-speed">Wind Speed: 7 Knots</h3>
+        <h3 className="water-temp">water Temperature: 67 F</h3>
+        <div class="alert alert-info" role="alert"><h2 className="surf-cond">Surf Condition: Knee to tight high</h2></div>  
+  </div>
+</div>
+        
+         
 
         </div>
     )

@@ -1,7 +1,6 @@
 /* NavBar Styling */
-.ui.menu:first-child {
-    margin-top: 0;
-    margin-bottom: 0;
+.navbar {
+    background-color: rgb(53, 190, 253);
 }
 
 /* Jumbotron/Message styling */
@@ -23,4 +22,10 @@
     margin-top: 0;
     margin-bottom: 1em;
     text-align: center;
+}
+
+.logo{
+    font-family: 'Lobster', cursive;
+    margin: 10px;
+    
 }

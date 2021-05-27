@@ -12,15 +12,15 @@ export const NavBar = () => {
         if (isAuthenticated) {
             return (
                 <>
-                    <Link to="/dashboard" className="item">{currentUser.email}</Link>
+                    <Link to="/dashboard" className="btn btn-outline-dark">{currentUser.email}</Link>
                     <Logout />
                 </>
             )
         } else {
             return (
                 <>
-                    <Link to="/login" className="item">Login</Link>
-                    <Link to="/register" className="item">Register</Link>
+                    <Link to="/login" className="btn btn-outline-dark m-1">Login</Link>
+                    <Link to="/register" className="btn btn-info">Register</Link>
                 </>
             )
         }
@@ -28,15 +28,35 @@ export const NavBar = () => {
     }
 
     return (
-        <div className="ui  menu">
-            <h1 className="logo">Surf's UP</h1>
-            <Link to="/" className="item">Home</Link>
-            {isAuthenticated ? <Link to="/pageone" className="item">Page One</Link> : ""}
-            <div className="right menu">
-            <input classname="btn btn-warning"/>
-                {showLinks()}
-            </div>
+        <div className="p-3 ">
+    <div className="container">
+      <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" className="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none">
+        <h1 className="logo">Surf's UP</h1>  
+        </a>
+
+        <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><Link to="/" className="item">Home</Link></li>
+          {/* {isAuthenticated ? <Link to="/pageone" className="item">Page One</Link> : ""} */}
+         
+        </ul>
+
+        <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" className="form-control form-control-dark" placeholder="Search..." aria-label="Search"/>
+        </form>
+
+        <div className="text-end">
+        {showLinks()}
+         
         </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+     
     )
 }
 

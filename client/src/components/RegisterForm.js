@@ -53,7 +53,7 @@ const RegisterForm = (props) => {
                         component={renderInput}
                         label="Password"
                     />
-                    <Button secondary fluid size='large'>
+                     <Button secondary fluid size='large'>
                         {props.buttonText}
                     </Button>
                 </Segment>
