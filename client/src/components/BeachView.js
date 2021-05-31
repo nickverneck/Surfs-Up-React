@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from "react-redux";
-export const Beach = (props) => {
+export const BeachView = (props) => {
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const showBtn = () => {
         if (isAuthenticated) {
@@ -40,4 +40,4 @@ return (
 )
 
 }
-export default Beach;
+export default BeachView;

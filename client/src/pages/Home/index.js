@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Spots from "../../components/Spots";
-import Beach from "../../components/Beach";
-import Forecast from "../../components/Forecast";
 import axios from "axios";
 import Moment from "react-moment";
 Moment.globalFormat = "D MMM";
@@ -25,53 +23,7 @@ export const Home = () => {
   useEffect(()=>{
    getNearbySpots()
   },[beachID])
-// ----- Does an API request that returns current live Beach data --------------//
 
-  const getBeachData = () => {
-    axios
-      .get(
-        "https://services.surfline.com/kbyg/spots/reports?spotId=584204214e65fad6a7709d2b"
-      )
-      .then((res) => {
-        setBeachData({
-          ...beachData,
-          name: res.data.spot.name,
-          waveHeightMin: res.data.forecast.waveHeight.min,
-          waveHeightMax: res.data.forecast.waveHeight.max,
-          windSpeed: res.data.forecast.wind.speed,
-          waterTemp: res.data.forecast.waterTemp.min,
-          temp: res.data.forecast.weather.temperature,
-          tempIcon:
-            "https://wa.cdn-surfline.com/quiver/0.18.2/weathericons/" +
-            res.data.forecast.weather.condition +
-            ".svg",
-          condition: res.data.forecast.waveHeight.humanRelation,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-// ------------- does an API request that returns forecast WAVE data for 144 hours //
-// we are going to loop through the 144 and only get in 24 increments to return 6 day forecast
-// we will need to wind & tide data later through other requests
-  const getForecastData = () => {
-    axios
-      .get(
-        "https://services.surfline.com/kbyg/spots/forecasts/wave?spotId=584204214e65fad6a7709d2b"
-      )
-      .then((res) => {
-        let forecast = [];
-        for (let i = 0; i < 144; i += 24) {
-          forecast.push(res.data.data.wave[i]);
-        }
-
-        setForecastData(forecast);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 // ---- this function will grab users location and save as useState to display the closest or closeby beaches 
 const getUserLocation = ()=>{
 axios.get("https://services.surfline.com/geo-target/region").then((res)=>{
@@ -99,7 +51,7 @@ const getClosestBeach = ()=> {
 const getNearbySpots = ()=>{
 axios.get(`https://services.surfline.com/kbyg/spots/nearby?spotId=${beachID}`).then((res)=>{
 let spots = []
-for (let i = 0; i < 5; i ++) {
+for (let i = 0; i < 4; i ++) {
     spots.push(res.data.data.spots[i]);
   } 
   setnearbySpot(spots)
