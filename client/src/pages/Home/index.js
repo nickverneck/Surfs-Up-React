@@ -7,9 +7,8 @@ export const Home = () => {
     const [userLocation, setUserLocation] = useState({});
     const [beachID, setBeachID] = useState();
     const [nearbySpots, setnearbySpot]= useState([]);
-  const [beachData, setBeachData] = useState({});
-  const [forecastData, setForecastData] = useState([]);
-  // gonna grab all the Api Calls and change their userState
+
+    // gonna grab all the Api Calls and change their userState
   useEffect(() => {
     // getBeachData();
     // getForecastData();
