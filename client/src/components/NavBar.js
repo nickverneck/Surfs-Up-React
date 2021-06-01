@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Logout from "./Logout";
-
+import SearchForm from "./SearchForm";
 export const NavBar = () => {
 
     const { currentUser, isAuthenticated } = useSelector(state => state.auth)
@@ -41,9 +41,7 @@ export const NavBar = () => {
          
         </ul>
 
-        <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" className="form-control form-control-dark" placeholder="Search..." aria-label="Search"/>
-        </form>
+       <SearchForm/>
 
         <div className="text-end">
         {showLinks()}
