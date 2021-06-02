@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector } from "react-redux";
 export const BeachView = (props) => {
+ 
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const showBtn = () => {
         if (isAuthenticated) {
           return (
             <div>
-              <button className="btn btn-outline-dark">Add to Favorites</button>
+              <a href={"/addfavorite/"+props.id} className="btn btn-outline-dark">Add to Favorites</a>
               <button className="btn btn-outline-dark m-1">Get Location</button>
             </div>
           );

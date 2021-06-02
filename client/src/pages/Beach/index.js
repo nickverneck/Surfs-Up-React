@@ -16,7 +16,7 @@ export const Beach = () => {
       }, []);
     // ----- Does an API request that returns current live Beach data --------------//
 
-  const getBeachData = () => {
+  const  getBeachData = () => {
     axios
       .get(
         "https://services.surfline.com/kbyg/spots/reports?spotId="+id
@@ -24,6 +24,7 @@ export const Beach = () => {
       .then((res) => {
         setBeachData({
           ...beachData,
+          id:id,
           name: res.data.spot.name,
           waveHeightMin: res.data.forecast.waveHeight.min,
           waveHeightMax: res.data.forecast.waveHeight.max,
