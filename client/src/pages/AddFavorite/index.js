@@ -25,7 +25,10 @@ export const AddFavorite = () => {
              console.log(err);
            });
         }
-       
+       const handleForm = (e)=>{
+         e.preventDefault()
+          console.log(favoriteData)
+       }
 
     return(<div className="container">
         <form>
@@ -33,7 +36,7 @@ export const AddFavorite = () => {
         <h4>Settings</h4>
         {/* <input type="text"></input> */}
 
-        <label for="customRange3" className="form-label"><h5>Wave Height(min,max):</h5><span>{favoriteData.waveMin} - {favoriteData.waveMax} FT</span></label>
+        <label for="customRange3" className="form-label"><h5>Wave Height(min,max): {favoriteData.waveMin} - {favoriteData.waveMax} FT</h5></label>
         <div className="col-3">
         <input type="range" className="form-range" min="0" max="100" step="1" id="wave-min" onChange={(e)=>{setfavoriteData({...favoriteData,waveMin:e.target.value})}}></input>
         <input type="range" className="form-range" min="0" max="100" step="1" id="wave-max" onChange={(e)=>{setfavoriteData({...favoriteData,waveMax:e.target.value})}}></input>
@@ -49,7 +52,15 @@ export const AddFavorite = () => {
         <input type="range" className="form-range" min="0" max="110" step="1" id="temp-min" onChange={(e)=>{setfavoriteData({...favoriteData,tempMin:e.target.value})}}></input>
         <input type="range" className="form-range" min="0" max="110" step="1" id="temp-max" onChange={(e)=>{setfavoriteData({...favoriteData,tempMax:e.target.value})}}></input>
         </div>
-        <button type ="submit" className="btn btn-outline-dark">Save</button>
+        <div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
+  <label class="form-check-label" for="flexSwitchCheckDefault">Activate Email Alert</label>
+</div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
+  <label class="form-check-label" for="flexSwitchCheckDefault">Activate Text Alert</label>
+</div>
+        <button onClick={(e)=>{handleForm(e)}} className="btn btn-outline-dark">Save</button>
         </form>
     </div>)
 }
