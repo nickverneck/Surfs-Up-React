@@ -23,15 +23,11 @@ const UserSchema = new Schema({
       name:String,
       sendEmail:Boolean,
       sendText:Boolean,
-      waveHeight:[{
-       min:Number,
-       max:Number,
-      }],
       windSpeed:Number,
-      temperature:[{
-          min:Number,
-          max:Number
-      }]
+      waveMin:Number,
+      waveMax:Number,
+      tempMin:Number,
+      tempMax:Number
   }],
 });
 

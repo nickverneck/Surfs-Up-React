@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import { useParams } from "react-router";
 export const AddFavorite = () => {
+  const { currentUser, isAuthenticated } = useSelector(state => state.auth)
      const [beachData, setBeachData] = useState({});
-     const [favoriteData, setfavoriteData] = useState({waveMin:0,waveMax:0,windSpeed:0, tempMin:0,tempMax:0});
+     const [favoriteData, setfavoriteData] = useState({sendEmail:false,sendText:false,waveMin:0,waveMax:0,windSpeed:0, tempMin:0,tempMax:0});
      let {id} = useParams();
      useEffect(() => {
        
-        //  getBeachData();
+          getBeachData();
        
      }, []);
-    
+    // we need to make sure we are getting the right id & beach name 
       const  getBeachData = () => {
          axios.get("https://services.surfline.com/kbyg/spots/reports?spotId="+id)
            .then((res) => {
-             setBeachData({
+             setBeachData({...favoriteData,
              id:id,
              name: res.data.spot.name
              })
@@ -25,9 +27,37 @@ export const AddFavorite = () => {
              console.log(err);
            });
         }
+        // notify
+        // nce we click the button we gonna prevent the page from refreshing
+        // then we gonna do a post method to /api/savefavorite with all the user settings
+
        const handleForm = (e)=>{
          e.preventDefault()
           console.log(favoriteData)
+          console.log(currentUser._id)
+          axios.post("/api/savefavorite",{
+            userId:currentUser._id,
+            beachId:beachData.id,
+            name:beachData.name,
+           windspeed:favoriteData.windSpeed,
+           waveMin:favoriteData.waveMin,
+           waveMax:favoriteData.waveMax,
+           tempMin:favoriteData.tempMin,
+           tempMax:favoriteData.tempMax,
+           sendEmail:favoriteData.sendEmail,
+           sendText:favoriteData.sendText,
+
+
+
+          }).then((res)=>{
+            if (!("Notification" in window)) {
+              console.log("This browser does not support desktop notification");
+            } else {
+              Notification.requestPermission();
+            }
+            new Notification(res.data)
+           console.log(res)
+          }).catch((err)=>{console.log(err)})
        }
 
     return(<div className="container">
@@ -53,12 +83,12 @@ export const AddFavorite = () => {
         <input type="range" className="form-range" min="0" max="110" step="1" id="temp-max" onChange={(e)=>{setfavoriteData({...favoriteData,tempMax:e.target.value})}}></input>
         </div>
         <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
-  <label class="form-check-label" for="flexSwitchCheckDefault">Activate Email Alert</label>
+  <input class="form-check-input" type="checkbox" onClick={(e)=>{setfavoriteData({...favoriteData,sendEmail:e.target.checked})}} id="email-alert"/>
+  <label class="form-check-label" for="email-alert">Activate Email Alert</label>
 </div>
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
-  <label class="form-check-label" for="flexSwitchCheckDefault">Activate Text Alert</label>
+  <input class="form-check-input" type="checkbox" onClick={(e)=>{setfavoriteData({...favoriteData,sendText:e.target.checked})}} id="text-alert"/>
+  <label class="form-check-label"  for="text-alert">Activate Text Alert</label>
 </div>
         <button onClick={(e)=>{handleForm(e)}} className="btn btn-outline-dark">Save</button>
         </form>

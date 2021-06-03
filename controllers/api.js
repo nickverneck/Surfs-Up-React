@@ -7,42 +7,43 @@ module.exports = {
     try {
         console.log(req.body)
         console.log("im being accessed")
+        res.send("beach has been added to favorites")
         
-    //   const {
-    //     user_id,
-    //     beach_id,
-    //     name,
-    //     sendEmail,
-    //     sendText,
-    //     waveHeightMin,
-    //     WaveHeightMax,
-    //     windSpeed,
-    //     tempMin,
-    //     tempMax,
-    //   } = req.body;
-    //   User.update(
-    //     { id: user_id },
-    //     {
-    //       $set: {
-    //         favorite: [
-    //           {
-    //             id: beach_id,
-    //             name: name,
-    //             sendEmail: sendEmail,
-    //             sendText: sendText,
-    //             waveHeight: [
-    //               {
-    //                 min: waveHeightMin,
-    //                 max: WaveHeightMax,
-    //               },
-    //             ],
-    //             windspeed: windSpeed,
-    //             temp: [{ min: tempMin, max: tempMax }],
-    //           },
-    //         ],
-    //       },
-    //     }
-    //   );
+      const {
+        userId,
+        beachId,
+        name,
+        sendEmail,
+        sendText,
+        waveMin,
+        waveMax,
+        windSpeed,
+        tempMin,
+        tempMax,
+      } = req.body;
+      User.updateOne(
+        { _id: userId },
+        {
+          $push: {
+            favorites: [
+              {
+                id: beachId,
+                name: name,
+                sendEmail: sendEmail,
+                sendText: sendText,
+                waveMin: waveMin,
+                waveMax: waveMax,
+                windspeed: windSpeed,
+                tempMin: tempMin, 
+                tempMax: tempMax 
+              },
+            ],
+          },
+        }
+      ).then((dbRes)=>{
+        console.log(name)
+        console.log(dbRes);
+      }).catch((err)=>{console.log(err)})
     } catch (err) {
       throw err;
     }

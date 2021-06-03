@@ -36,7 +36,7 @@ export const registerUser = (data) => async dispatch => {
             payload: response.data
         });
         // redirect to page
-        history.push("/pageone");
+        history.push("/");
 
     } catch (err) {
         // dispatch get error Action

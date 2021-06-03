@@ -8,7 +8,6 @@ import Home from "../pages/Home";
 import Beach from "../pages/Beach";
 import AddFavorite from "../pages/AddFavorite";
 import UserDashboard from "../pages/UserDashboard";
-import PageOne from "../pages/PageOne";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "./PrivateRoute";
@@ -35,7 +34,6 @@ export const App = () => {
           <Route path="/AddFavorite/:id" component={AddFavorite} />
           <Route path="/register" component={Register} />
           <PrivateRoute path="/dashboard" component={UserDashboard} />
-          <PrivateRoute path="/pageone" component={PageOne} />
           <Route component={NoMatch} />
         </Switch>
       </Router>
