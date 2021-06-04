@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const config = require("./config");
 const routes = require("./routes");
-
+const scheduler = require("./scheduler");
 const app = express();
 
 // middleware to parse data
@@ -31,3 +31,6 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`App listening on Http://localhost:${PORT}`);
 })
+// start scheduler function after app has been started 
+scheduler.getAllUsers();
+console.log("scheduler started");

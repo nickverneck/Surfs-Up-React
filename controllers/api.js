@@ -3,16 +3,6 @@ const jwt = require("jsonwebtoken");
 const config = require("../config");
 const User = require("../models/user");
 module.exports = {
-async getUserFavs(req,res){
-try {
-User.findById(req.body).then((dbRes) =>{
-  res.send(dbRes)
-} )
-}catch (err) {
-  throw err;
-}
-
-},
 
   // save a new favorite beach instance to the defined user by its _id
   async savefavorite(req, res) {
