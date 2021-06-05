@@ -36,7 +36,7 @@ export const registerUser = (data) => async dispatch => {
             payload: response.data
         });
         // redirect to page
-        history.push("/");
+        history.push("/pageone");
 
     } catch (err) {
         // dispatch get error Action
@@ -58,7 +58,7 @@ export const loginUser = (data) => async dispatch => {
             payload: response.data
         });
         // redirect to page
-        history.push("/");
+        history.push("/pageone");
 
     } catch (err) {
         // dispatch get error Action

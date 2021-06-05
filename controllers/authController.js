@@ -45,7 +45,8 @@ module.exports = {
                             token,
                             firstname,
                             lastname,
-                            email
+                            email,
+                            favorites: user.favorites
                         })
                     })
 
@@ -82,7 +83,8 @@ module.exports = {
                         token,
                         firstname: user.firstname,
                         lastname: user.lastname,
-                        email
+                        email,
+                        favorites: user.favorites
                     })
                 })
             })
@@ -105,7 +107,5 @@ module.exports = {
 
         }
     }
-
-    
 
 };

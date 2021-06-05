@@ -10,8 +10,7 @@ export const Home = () => {
 
     // gonna grab all the Api Calls and change their userState
   useEffect(() => {
-    // getBeachData();
-    // getForecastData();
+   
     getUserLocation();
   }, []);
 //   make sure get closebeach only run if userlocation has changed
@@ -24,8 +23,8 @@ export const Home = () => {
   },[beachID])
 
 // ---- this function will grab users location and save as useState to display the closest or closeby beaches 
-const getUserLocation = ()=>{
-axios.get("https://services.surfline.com/geo-target/region").then((res)=>{
+const  getUserLocation = async ()=>{
+await axios.get("https://services.surfline.com/geo-target/region").then((res)=>{
 setUserLocation({
     lat: res.data.location.latitude,
     lon:res.data.location.longitude,
@@ -37,8 +36,8 @@ setUserLocation({
 // this one will use userLocation usestate lat and long cordinates to find the users closest beach
 // the cordinates are super accurate but the api doesnt return a good match
 // there is no fix since the problem is on their api but atleast we get a beach id that we can use to find all closeby beaches
-const getClosestBeach = ()=> {
-    axios.get(`https://services.surfline.com/kbyg/mapview/spot?lat=${userLocation.lat}&lon=${userLocation.lon}`).then((res)=>{
+const getClosestBeach = async()=> {
+    await axios.get(`https://services.surfline.com/kbyg/mapview/spot?lat=${userLocation.lat}&lon=${userLocation.lon}`).then((res)=>{
     setBeachID(res.data.spot._id)
     console.log(userLocation)
    }).catch((err)=> console.log(err))
@@ -47,8 +46,8 @@ const getClosestBeach = ()=> {
 // now here is then function that will help us populate the home. it will grab the beachID and do an api call to grab all nearby beaches
 // this api call will literally give us all information we need for each beach which we can send as props to a component and build a layout
 // with most relevant data from each beach, right now is limited to 4 entries but can be increased to more depending how the layout looks
-const getNearbySpots = ()=>{
-axios.get(`https://services.surfline.com/kbyg/spots/nearby?spotId=${beachID}`).then((res)=>{
+const getNearbySpots = async()=>{
+await axios.get(`https://services.surfline.com/kbyg/spots/nearby?spotId=${beachID}`).then((res)=>{
 let spots = []
 for (let i = 0; i < 4; i ++) {
     spots.push(res.data.data.spots[i]);

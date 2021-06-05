@@ -37,7 +37,7 @@ export const NavBar = () => {
 
         <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><Link to="/" className="item">Home</Link></li>
-          {/* {isAuthenticated ? <Link to="/pageone" className="item">Page One</Link> : ""} */}
+          
          
         </ul>
 

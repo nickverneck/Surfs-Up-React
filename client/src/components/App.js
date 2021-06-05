@@ -10,6 +10,7 @@ import AddFavorite from "../pages/AddFavorite";
 import UserDashboard from "../pages/UserDashboard";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import PageOne from "../pages/PageOne";
 import PrivateRoute from "./PrivateRoute";
 import NoMatch from "../pages/NoMatch";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -33,6 +34,7 @@ export const App = () => {
           <Route path="/beach/:id" component={Beach} />
           <Route path="/AddFavorite/:id" component={AddFavorite} />
           <Route path="/register" component={Register} />
+          <PrivateRoute path="/pageone" component={PageOne} />
           <PrivateRoute path="/dashboard" component={UserDashboard} />
           <Route component={NoMatch} />
         </Switch>

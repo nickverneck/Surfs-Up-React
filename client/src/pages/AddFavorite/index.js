@@ -39,7 +39,7 @@ export const AddFavorite = () => {
             userId:currentUser._id,
             beachId:beachData.id,
             name:beachData.name,
-           windspeed:favoriteData.windSpeed,
+           windSpeed:favoriteData.windSpeed,
            waveMin:favoriteData.waveMin,
            waveMax:favoriteData.waveMax,
            tempMin:favoriteData.tempMin,

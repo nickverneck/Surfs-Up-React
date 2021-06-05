@@ -14,9 +14,9 @@ export const Forecast = (props) => {
                 <Moment unix>{data.timestamp}</Moment>
               </h5>
               <p className="card-text">
-                {Math.floor(data.surf.min) +
+                {Math.round(data.surf.min) +
                   "-" +
-                  Math.ceil(data.surf.max) +
+                  Math.round(data.surf.max) +
                   "ft"}
               </p>
             </div>
