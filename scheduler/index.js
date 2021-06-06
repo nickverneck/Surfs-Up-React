@@ -2,6 +2,8 @@ const nodemailer = require("nodemailer");
 const cron = require("node-cron");
 const User = require("../models/user");
 const axios = require("axios");
+const moment = require("moment");
+require("dotenv").config();
 // Alright this is the most important part of the whole app.
 // first we gonna Start a scheduler that will check the report every 6hr*
 //  once the amount of hours have passed we will get all users in the database
@@ -23,6 +25,31 @@ const inbetween= (n1,n2,n3,n4)=>{
     else{
         return false;
     }
+}
+const sendEmail=(message,toEmail)=>{
+// e-mail message options
+let mailOptions = {
+  from: process.env.EMAIL_USER,
+  to: toEmail,
+  subject: 'Surf is UP',
+  text: message
+}
+
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+
 }
 module.exports = {
   async surfNotification() {
@@ -75,8 +102,8 @@ module.exports = {
           //  now we gonna add them to the options array to later send the notification but only if the conditions are good
          if (isSurf && isWind && isWeather)
              {
-               options.push({time:time,waveMin:surf.min,waveMax:surf.max,windSpeed:wind.speed,weatherTemp:weather.temperature})
-               console.log("this is true")
+               options.push({name:beach.name,time:time,waveMin:surf.min,waveMax:surf.max,windSpeed:wind.speed,weatherTemp:weather.temperature})
+               console.log("this is is true")
 
              }
              else{console.log("this is false")}
@@ -88,13 +115,15 @@ module.exports = {
           let message =``;
           for (let i=0; i<options.length; i++)
           {
-            message += "options:"
-            console.log(options[i])
+            message += `${options[i].name} at ${moment.unix(options[i].time).format('dddd, MMMM Do, YYYY h:mm:ss ')} with waves between ${Math.round(options[i].waveMin)} and ${Math.round(options[i].waveMax)} \n`
+            
           }
+          console.log(message)
           // call function to send email
           if (beach.sendEmail)
           {
             
+              sendEmail(message,user.email)
           }
           // call function to send text
           if (beach.sendText)
