@@ -64,24 +64,33 @@ module.exports = {
             let wind = windData.data.data.wind[i]
             let weather = weatherData.data.data.weather[i]
             let time =waveData.data.data.wave[i].timestamp
-             console.log(wind.speed)
-             console.log(beach)
-             console.log(weather)
+            
          let isSurf= inbetween(surf.min,beach.waveMin,surf.max,beach.waveMax)
          let isWind= inbetween(0,0,wind.speed,beach.windSpeed)
          let isWeather= inbetween(weather.temperature,beach.tempMin,weather.temperature,beach.tempMax)
+         console.log(beach.name)
+         console.log("surf is "+isSurf)
+         console.log("wind is "+isWind)
+         console.log("weather is "+isWeather)
           //  now we gonna add them to the options array to later send the notification but only if the conditions are good
          if (isSurf && isWind && isWeather)
              {
                options.push({time:time,waveMin:surf.min,waveMax:surf.max,windSpeed:wind.speed,weatherTemp:weather.temperature})
-               
+               console.log("this is true")
 
              }
+             else{console.log("this is false")}
           }
           // we looped through the forecast now we gonna check if our array has any entries if it does we continue, otherwise we move on
           if (options.length>0)
         {
-          
+          console.log("we have options")
+          let message =``;
+          for (let i=0; i<options.length; i++)
+          {
+            message += "options:"
+            console.log(options[i])
+          }
           // call function to send email
           if (beach.sendEmail)
           {

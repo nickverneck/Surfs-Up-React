@@ -35,7 +35,7 @@ module.exports = {
                 sendText: sendText,
                 waveMin: waveMin,
                 waveMax: waveMax,
-                windspeed: windSpeed,
+                windSpeed: windSpeed,
                 tempMin: tempMin, 
                 tempMax: tempMax 
               },
