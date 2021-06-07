@@ -56,7 +56,7 @@ for (let i = 0; i < 4; i ++) {
 }).catch((err)=> console.log(err))
 }
   return (
-    <div className="container">
+    <div className="container bg-light">
       <div className="row">
       <Spots {... nearbySpots}/>
       </div>

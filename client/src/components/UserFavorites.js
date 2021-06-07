@@ -5,8 +5,8 @@ export const UserFavorites = (props) => {
     const  favoritesData = Object.values(props)
 return (
     favoritesData.map((data) => (
-    <div className="m-5">
-          <span className="beach-name m-1">{data.name}</span>
+    <div className="m-1 card">
+          <a href={"/beach/"+data.id} style={{textDecoration:'none', color:'black'}}><span className="beach-name m-1" style={{ fontSize:23}}>{data.name}</span></a>
           <div className="btn-group">
             <a href="#" className="btn btn-outline-dark active" aria-current="page">
             <FontAwesomeIcon icon="bell" />
