@@ -32,4 +32,4 @@ app.listen(PORT, () => {
     console.log(`App listening on Http://localhost:${PORT}`);
 })
 // start scheduler function after app has been started 
-// scheduler.surfNotification()
+ scheduler.surfNotification()

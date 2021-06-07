@@ -13,12 +13,12 @@ export const Forecast = (props) => {
               <h5 className="card-title">
                 <Moment unix>{data.timestamp}</Moment>
               </h5>
-              <p className="card-text">
+              <span className="badge rounded-pill bg-info text-dark m-2">
                 {Math.round(data.surf.min) +
                   "-" +
                   Math.round(data.surf.max) +
                   "ft"}
-              </p>
+              </span>
             </div>
           </div>
         </div>

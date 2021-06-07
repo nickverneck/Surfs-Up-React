@@ -68,19 +68,19 @@ export const AddFavorite = () => {
 
         <label for="customRange3" className="form-label"><h5>Wave Height(min,max): {favoriteData.waveMin} - {favoriteData.waveMax} FT</h5></label>
         <div className="col-3">
-        <input type="range" className="form-range" min="0" max="100" step="1" id="wave-min" onChange={(e)=>{setfavoriteData({...favoriteData,waveMin:e.target.value})}}></input>
-        <input type="range" className="form-range" min="0" max="100" step="1" id="wave-max" onChange={(e)=>{setfavoriteData({...favoriteData,waveMax:e.target.value})}}></input>
+        <input type="range" className="form-range" min="0" max="100" step="1" id="wave-min" value="0" onChange={(e)=>{setfavoriteData({...favoriteData,waveMin:e.target.value})}}></input>
+        <input type="range" className="form-range" min="0" max="100" step="1" id="wave-max" value="0" onChange={(e)=>{setfavoriteData({...favoriteData,waveMax:e.target.value})}}></input>
         </div>
         
         <label for="customRange3" className="form-label"><h5>Wind Speed(max): {favoriteData.windSpeed} Knots</h5></label>
         <div className="col-3">
-        <input type="range" className="form-range" min="0" max="50" step="1" id="winds-speed" onChange={(e)=>{setfavoriteData({...favoriteData,windSpeed:e.target.value})}}></input>
+        <input type="range" className="form-range" min="0" max="50" step="1" id="winds-speed" value="0" onChange={(e)=>{setfavoriteData({...favoriteData,windSpeed:e.target.value})}}></input>
         </div>
         
         <label for="customRange3" className="form-label"><h5>temperature(min,max): {favoriteData.tempMin} - {favoriteData.tempMax} °F</h5></label>
         <div className="col-3">
-        <input type="range" className="form-range" min="0" max="110" step="1" id="temp-min" onChange={(e)=>{setfavoriteData({...favoriteData,tempMin:e.target.value})}}></input>
-        <input type="range" className="form-range" min="0" max="110" step="1" id="temp-max" onChange={(e)=>{setfavoriteData({...favoriteData,tempMax:e.target.value})}}></input>
+        <input type="range" className="form-range" min="0" max="110" step="1" id="temp-min" value="0" onChange={(e)=>{setfavoriteData({...favoriteData,tempMin:e.target.value})}}></input>
+        <input type="range" className="form-range" min="0" max="110" step="1" id="temp-max" value="0" onChange={(e)=>{setfavoriteData({...favoriteData,tempMax:e.target.value})}}></input>
         </div>
         <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" onClick={(e)=>{setfavoriteData({...favoriteData,sendEmail:e.target.checked})}} id="email-alert"/>

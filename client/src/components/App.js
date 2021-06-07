@@ -15,7 +15,7 @@ import PrivateRoute from "./PrivateRoute";
 import NoMatch from "../pages/NoMatch";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faCogs, faMinus, faBell } from "@fortawesome/free-solid-svg-icons";
+import { faCogs, faMinus, faBell} from "@fortawesome/free-solid-svg-icons";
 library.add(fab, faCogs, faMinus, faBell);
 export const App = () => {
   const dispatch = useDispatch();

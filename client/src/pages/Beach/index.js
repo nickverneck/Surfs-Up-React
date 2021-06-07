@@ -26,10 +26,13 @@ export const Beach = () => {
           ...beachData,
           id:id,
           name: res.data.spot.name,
+          location: `${res.data.spot.breadcrumb[3].name} , ${res.data.spot.breadcrumb[1].name}`,
           waveHeightMin: res.data.forecast.waveHeight.min,
           waveHeightMax: res.data.forecast.waveHeight.max,
           windSpeed: res.data.forecast.wind.speed,
+          windDir:res.data.forecast.wind.direction,
           waterTemp: res.data.forecast.waterTemp.min,
+          tide: res.data.forecast.tide.next.type,
           temp: res.data.forecast.weather.temperature,
           tempIcon:
             "https://wa.cdn-surfline.com/quiver/0.18.2/weathericons/" +
