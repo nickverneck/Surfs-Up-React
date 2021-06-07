@@ -8,7 +8,7 @@ module.exports = {
 
         try {
 
-            const { email, password, firstname, lastname } = req.body;
+            const { email, password, firstname, lastname,phone } = req.body;
             // Check user enters all fields
             if (!email || !password || !firstname || !lastname) return res.status(400).json({ message: "Please enter all fields" });
             // Check the user enters the right formatted email
@@ -22,6 +22,7 @@ module.exports = {
                 firstname,
                 lastname,
                 email,
+                phone,
                 password
             })
 
@@ -46,6 +47,7 @@ module.exports = {
                             firstname,
                             lastname,
                             email,
+                            phone,
                             favorites: user.favorites
                         })
                     })
@@ -84,6 +86,7 @@ module.exports = {
                         firstname: user.firstname,
                         lastname: user.lastname,
                         email,
+                        phone:user.phone,
                         favorites: user.favorites
                     })
                 })

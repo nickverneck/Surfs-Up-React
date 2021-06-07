@@ -20,7 +20,7 @@ export const NavBar = () => {
             return (
                 <>
                     <Link to="/login" className="btn btn-outline-dark m-1">Login</Link>
-                    <Link to="/register" className="btn btn-info">Register</Link>
+                    <Link to="/register" className="btn btn-outline-dark m-1">Register</Link>
                 </>
             )
         }
@@ -30,13 +30,13 @@ export const NavBar = () => {
     return (
         <div className="p-3 ">
     <div className="container">
-      <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start navbar navbar-dark" style={{border: '1px solid gray'}}>
         <a href="/" className="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none">
-        <h1 className="logo">Surf's UP</h1>  
+        <h1 className="logo" style={{color:'white'}}>Surf's UP</h1>  
         </a>
 
         <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><Link to="/" className="item">Home</Link></li>
+          <li><Link to="/" className="item" style={{color:'white'}}>Home</Link></li>
           
          
         </ul>

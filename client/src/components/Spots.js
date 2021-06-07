@@ -6,25 +6,27 @@ export const Spots = (props) => {
       
         spotData.map((data) => (
              
-            <div className="col-6">
-                <a href={'/beach/'+data._id}>
+            <div className="col-4">
+                
           <div className="card m-2">
+          <img src={data.thumbnail} altclass="card-img-top" style={{width: '100%', height: 300}}alt="..."/>
             <div className="card-body">
               <h3 className="card-title">
-                {data.name}
+                {data.name}<a href={'/beach/'+data._id} className="btn btn-info m-2">Surf Report</a>
               </h3>
-              <p className="card-text">
-                {Math.floor(data.waveHeight.min) +
+              
+              <span className="badge rounded-pill bg-info text-dark m-2"> {Math.floor(data.waveHeight.min) +
                   "-" +
                   Math.ceil(data.waveHeight.max) +
-                  "ft"}
-              </p>
-              <p>{data.weather.temperature}ºf <img src="https://wa.cdn-surfline.com/quiver/0.18.2/weathericons/WATER_ICON.svg" alt="Water Temp"/></p>
-              <p>{data.waterTemp.min}ºf <img src={'https://wa.cdn-surfline.com/quiver/0.18.2/weathericons/'+data.weather.condition+'.svg'} alt="weather icon" /></p>
+                  "ft "}</span>
+                  <span className="badge rounded-pill bg-light text-dark m-2">{ data.tide.next.type+ ' TIDE'} </span>
+              <span className="badge rounded-pill bg-light text-dark m-2">{data.waterTemp.min}ºf <img src={'https://wa.cdn-surfline.com/quiver/0.18.2/weathericons/'+data.weather.condition+'.svg'} alt="weather icon" /></span>
+              <span className="badge rounded-pill bg-light text-dark m-2">{data.weather.temperature}ºf <img src="https://wa.cdn-surfline.com/quiver/0.18.2/weathericons/WATER_ICON.svg" alt="Water Temp"/></span>
+             
               
             </div>
           </div>
-          </a>
+         
         </div>
       ))
         

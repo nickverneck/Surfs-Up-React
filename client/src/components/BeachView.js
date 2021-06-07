@@ -8,7 +8,7 @@ export const BeachView = (props) => {
           return (
             <div>
               <a href={"/addfavorite/"+props.id} className="btn btn-outline-dark">Add to Favorites</a>
-              <button className="btn btn-outline-dark m-1">Get Location</button>
+              {/* <button className="btn btn-outline-dark m-1">Get Location</button> */}
             </div>
           );
         }
