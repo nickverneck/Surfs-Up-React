@@ -3,7 +3,7 @@
 
 ## Online Example & Deployment:
 
-This application has not been deployed yet.
+https://lazysurfer.herokuapp.com/
 
 
 ## Description
@@ -12,7 +12,7 @@ This is a MERN application with authentication using JSON Web Tokens. This APP w
 
 ## Web Tools:
 
-Full MERN stack: React, Node.js, Express, MongoDB, Javascript (ES6), Redux, JSON Web Tokens, Rest API, Semantic UI, BootStrap 5.0.
+Full MERN stack: React, Node.js, Express, MongoDB, Javascript (ES6), Redux, JSON Web Tokens, Rest API, Semantic UI, BootStrap 5.0,Twlio(api to send SMS),NodeMailer,Cron (scheduler)
 
 ## Table of Contents 
 
@@ -42,6 +42,12 @@ npm install
 
         #JWT Secret
         JWT_SECRET = "Your JWT Secret"
+        #EMAIL authentication
+        EMAIL_PASS="password"
+        EMAIL_USER="your@gmail.com"
+        #TWLIO authentication
+        TWILIO_ACCOUNT_SID="your account sid"
+        TWILIO_AUTH_TOKEN="your account token"
 
     3.  Run the following command to start the application: npm run dev
     4.  Enjoy..!
@@ -54,7 +60,10 @@ npm install
 If you have any questions about the repo, open an issue or contact [nickverneck](https://github.com/nickverneck) directly at nicollas@gmail.com.
 
 
+## Screenshots
 
+![ss](./ss.jpg)
+![ss](./ss2.jpg)
 
 
 
