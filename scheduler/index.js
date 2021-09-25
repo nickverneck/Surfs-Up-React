@@ -74,7 +74,7 @@ module.exports = {
   // this is the scheduler function, if * * * * * it will check every minute, we gonna change after presentation to 6 hours
 
   async surfNotification() {
-    cron.schedule("0 1 * * *", () => {
+    cron.schedule("* * * * *", () => {
       this.getAllUsers();
     });
   },
